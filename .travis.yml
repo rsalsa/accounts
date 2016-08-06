@@ -1,0 +1,32 @@
+language: java
+sudo: required
+services:
+  - docker
+jdk:
+  - oraclejdk8
+install: true
+
+env:
+  - GROUP=weaveworksdemos;
+  - MODULE=accounts;
+  - REPO=${GROUP}/${MODULE};
+  - COMMIT=$TRAVIS_COMMIT;
+  - TAG=$TRAVIS_TAG;
+
+script:
+  - set -e
+  - ./test/test.sh unit.py
+  - echo "Component test stub"
+  - echo "Container test stub"
+
+after_success:
+  - set -e;
+  - ./build.sh;
+  - if [ -z "$DOCKER_PASS" ] ; then
+      echo "This is a build triggered by an external PR. Skipping docker push.";
+      exit 0;
+    fi;
+  - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS;
+  - ./push.sh "$REPO:$COMMIT";
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then docker tag $REPO:${COMMIT} $REPO:snapshot; ./push.sh $REPO:snapshot; fi;
+  - if [ -n "$TRAVIS_TAG" ]; then docker tag $REPO:${COMMIT} $REPO:$TRAVIS_TAG; ./push.sh $REPO:$TRAVIS_TAG; docker tag $REPO:$TRAVIS_COMMIT $REPO:latest; ./push.sh $REPO:latest; fi;
