@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+set -ev
+
 SCRIPT_DIR=`dirname "$0"`
 SCRIPT_NAME=`basename "$0"`
 SSH_OPTS=-oStrictHostKeyChecking=no
