@@ -35,6 +35,26 @@ public class Card {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Card card = (Card) o;
+
+        return getId().equals(card.getId());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
+
+    public String getId() {
+        return id;
+    }
+
     public String getLongNum() {
         return longNum;
     }

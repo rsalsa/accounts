@@ -42,6 +42,26 @@ public class Address {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Address address = (Address) o;
+
+        return getId().equals(address.getId());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return getId().hashCode();
+    }
+
+    public String getId() {
+        return id;
+    }
+
     public String getNumber() {
         return number;
     }

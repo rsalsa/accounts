@@ -53,6 +53,25 @@ public class Customer {
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (!getId().equals(customer.getId())) return false;
+        return getUsername() != null ? getUsername().equals(customer.getUsername()) : customer.getUsername() == null;
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = getId().hashCode();
+        result = 31 * result + (getUsername() != null ? getUsername().hashCode() : 0);
+        return result;
+    }
+
     public String getId() {
         return id;
     }

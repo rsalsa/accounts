@@ -12,7 +12,7 @@ env:
 script:
   - set -e
   - ./test/test.sh unit.py
-  - echo "Component test stub"
+  - ./test/test.sh component.py
   - echo "Container test stub"
 
 after_success:
