@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/microservices-demo/accounts.svg?branch=master)](https://travis-ci.org/microservices-demo/accounts)
 # accounts
 A microservices-demo service that provides user account information.
 
