@@ -1,4 +1,4 @@
-package works.weave.socks.accounts;
+package works.weave.socks.accounts.util;
 
 
 import works.weave.socks.accounts.entities.Address;
