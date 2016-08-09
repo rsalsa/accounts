@@ -11,13 +11,13 @@ env:
 
 script:
   - set -e
+  - ./scripts/build.sh;
   - ./test/test.sh unit.py
   - ./test/test.sh component.py
   - echo "Container test stub"
 
 after_success:
   - set -e;
-  - ./scripts/build.sh;
   - if [ -z "$DOCKER_PASS" ] ; then
       echo "This is a build triggered by an external PR. Skipping docker push.";
       exit 0;
