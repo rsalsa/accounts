@@ -19,4 +19,4 @@ fi
 
 echo "Testing $1"
 CODE_DIR=$(cd $SCRIPT_DIR/..; pwd)
-$DOCKER_CMD run --rm --name test -v /var/run/docker.sock:/var/run/docker.sock -v $CODE_DIR:$CODE_DIR -w $CODE_DIR test-container sh -c "export PYTHONPATH=\$PYTHONPATH:\$PWD/test ; python test/$@"
+$DOCKER_CMD run --rm --name test -v /var/run/docker.sock:/var/run/docker.sock -v $CODE_DIR:$CODE_DIR -w $CODE_DIR -e COVERALLS_TOKEN=$COVERALLS_TOKEN test-container sh -c "export PYTHONPATH=\$PYTHONPATH:\$PWD/test ; python test/$@"
