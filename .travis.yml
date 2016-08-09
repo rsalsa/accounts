@@ -7,30 +7,20 @@ jdk:
 install: true
 
 env:
-  - GROUP=weaveworksdemos MODULE=accounts REPO=${GROUP}/${MODULE} COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG;
+  - GROUP=weaveworksdemos COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG;
 
 script:
   - set -e
+  - ./scripts/build.sh;
   - ./test/test.sh unit.py
   - ./test/test.sh component.py
   - echo "Container test stub"
 
 after_success:
   - set -e;
-  - ./scripts/build.sh;
   - if [ -z "$DOCKER_PASS" ] ; then
       echo "This is a build triggered by an external PR. Skipping docker push.";
       exit 0;
     fi;
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS;
-  - ./scripts/push.sh "$REPO:$COMMIT";
-  - if [ "$TRAVIS_BRANCH" == "master" ]; then
-      docker tag $REPO:${COMMIT} $REPO:snapshot;
-      ./scripts/push.sh "$REPO:snapshot";
-    fi;
-  - if [ -n "$TRAVIS_TAG" ]; then
-      docker tag $REPO:${COMMIT} $REPO:$TRAVIS_TAG;
-      ./scripts/push.sh "$REPO:$TRAVIS_TAG";
-      docker tag $REPO:$TRAVIS_COMMIT $REPO:latest;
-      ./scripts/push.sh "$REPO:latest";
-    fi;
+  - ./scripts/push.sh

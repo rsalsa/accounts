@@ -1,13 +1,13 @@
 package works.weave.socks.accounts.entities;
 
 import org.junit.Test;
-import works.weave.socks.accounts.DataGenerator;
+import works.weave.socks.accounts.util.DataGenerator;
 import works.weave.socks.accounts.util.EqualsTester;
 
 import static java.util.Collections.singletonList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.Matchers.greaterThan;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertThat;
 
 public class UnitCustomer {
     private DataGenerator dummyData = new DataGenerator();

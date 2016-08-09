@@ -6,13 +6,13 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
-import works.weave.socks.accounts.DataGenerator;
 import works.weave.socks.accounts.config.DatabaseLoaderTestConfiguration;
 import works.weave.socks.accounts.entities.Address;
+import works.weave.socks.accounts.util.DataGenerator;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 @RunWith(SpringRunner.class)
 @EnableAutoConfiguration
