@@ -12,7 +12,7 @@ class JavaServices(unittest.TestCase):
         home = expanduser("~")
         command = ['docker', 'run', '--rm', '-v', home + '/.m2:/root/.m2', '-v', code_dir + ':/usr/src/mymaven', '-w',
                    '/usr/src/mymaven', 'maven:3.2-jdk-8', 'mvn', 'test']
-        Docker().execute(command)
+        print(Docker().execute(command))
 
 
 if __name__ == '__main__':
