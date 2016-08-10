@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/microservices-demo/accounts.svg?branch=master)](https://travis-ci.org/microservices-demo/accounts) [![Coverage Status](https://coveralls.io/repos/github/microservices-demo/accounts/badge.svg?branch=build%2Fcoveralls)](https://coveralls.io/github/microservices-demo/accounts?branch=build%2Fcoveralls)
+[![Build Status](https://travis-ci.org/microservices-demo/accounts.svg?branch=master)](https://travis-ci.org/microservices-demo/accounts) [![Coverage Status](https://coveralls.io/repos/github/microservices-demo/accounts/badge.svg?branch=master)](https://coveralls.io/github/microservices-demo/accounts?branch=master)
 # accounts
 A microservices-demo service that provides user account information.
 
