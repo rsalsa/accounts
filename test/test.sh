@@ -13,8 +13,13 @@ else
 fi
 
 if [[ -z $($DOCKER_CMD images | grep test-container) ]] ; then
-    echo "Building test container"
-    docker build -t test-container $SCRIPT_DIR > /dev/null
+    if [[ -n ${TRAVIS} ]] ; then
+        echo "Building test container for TRAVIS"
+        docker build -t test-container $SCRIPT_DIR/travis > /dev/null
+    elif [[ -n ${SNAP_CI} ]] ; then
+        echo "Building test container on SNAP CI"
+        docker build -t test-container $SCRIPT_DIR/snap > /dev/null
+    fi
 fi
 
 echo "Testing $1"
