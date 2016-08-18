@@ -7,7 +7,7 @@ jdk:
 install: true
 
 env:
-  - GROUP=weaveworksdemos COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG;
+  - GROUP=weaveworksdemos COMMIT=$TRAVIS_COMMIT TAG=$TRAVIS_TAG BASTION_USER=ubuntu;
 
 script:
   - set -e
@@ -38,6 +38,6 @@ addons:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -i ubuntu@$BASTION sh -c "./deploy.sh accounts $COMMIT"
+  script: ssh -i $BASTION_USER@$BASTION sh -c "./deploy.sh accounts $COMMIT"
   on:
     branch: master
