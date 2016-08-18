@@ -38,6 +38,6 @@ addons:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh -i $BASTION_USER@$BASTION sh -c "./deploy.sh accounts $COMMIT"
+  script: ssh $BASTION_USER@$BASTION sh -c "./deploy.sh accounts $COMMIT"
   on:
     branch: master
