@@ -25,3 +25,6 @@ after_success:
     fi;
   - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS;
   - ./scripts/push.sh
+  - if [ "$TRAVIS_BRANCH" == "master" ]; then
+        ssh -i $BASTION_KEY ubuntu@$BASTION sh -c './deploy.sh accounts snapshot';
+    fi;
