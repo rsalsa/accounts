@@ -38,6 +38,6 @@ addons:
 deploy:
   provider: script
   skip_cleanup: true
-  script: ssh $BASTION_USER@$BASTION sh -c "./deploy.sh accounts $COMMIT"
+  script: ssh -o StrictHostKeyChecking=no $BASTION_USER@$BASTION sh -c "./deploy.sh accounts $COMMIT"
   on:
     branch: master
