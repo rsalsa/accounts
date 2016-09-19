@@ -1,6 +1,10 @@
 FROM mongo:3
 ADD ./scripts /tmp/scripts
 
+ARG BUILD_DATE
+ARG BUILD_VERSION
+ARG COMMIT
+
 # Modify child mongo to use /data/db-accounts as dbpath (because /data/db wont persist the build because it is already a VOLUME)
 RUN mkdir -p /data/db-accounts \
     && echo "dbpath = /data/db-accounts" > /etc/mongodb.conf \
